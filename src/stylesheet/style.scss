@@ -1,0 +1,74 @@
+$ap: 8px;
+$am: 8px;
+$br: 8px;
+
+:root {
+  --area-padding: #{$ap};
+  --area-margin: #{$am};
+  --border-radius: #{$br};
+}
+
+body {
+  font-size: sans-serif;
+  color: #666;
+}
+
+button {
+  border-radius: 8px;
+  border: none;
+  padding-inline: 16px;
+  padding-block: 4px;
+  margin-inline: 2px;
+  cursor: pointer;
+
+  &:hover {
+    background: #79a8a9;
+    color: #fff;
+    transition: .3s ease;
+  }
+}
+
+section {
+  width: 400px;
+  // height: min(100%, 200px);
+  min-height: 200px;
+  margin: var(--area-margin);
+  padding: var(--area-padding);
+  border: 2px solid #aacfd0;
+  border-radius: var(--border-radius);
+
+  & .list-row {
+    display: flex;
+    align-items: center;
+
+    & .todo-item {
+      margin: 6px;
+    }
+  }
+}
+
+.section-title {
+  text-align: center;
+  margin-top: 0;
+  font-weight: bold;
+}
+
+.input-area {
+  width: 400px;
+  height: 30px;
+  padding: var(--area-padding);
+  margin: var(--area-margin);
+  border-radius: var(--border-radius);
+  background: #c6e5d9;
+
+  &>input {
+    border-radius: var(--border-radius);
+    border: none;
+    padding-inline: 16px;
+    padding-block: 6px;
+  }
+}
+
+.complete-area {
+  background: #c9dede;
+}
