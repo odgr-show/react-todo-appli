@@ -1,4 +1,7 @@
 import React from 'react';
+import { InputTodo } from './components/InputTodo';
+import { IncompleteTodos } from './components/IncompleteTodos';
+import { CompleteTodos } from './components/CompleteTodos';
 import './stylesheet/style.css';
 
 // ネームドエクスポート
@@ -46,61 +49,15 @@ export const Todo = () => {
 
     return (
         <>
-            <div className="input-area">
-                <input
-                    className="add-text"
-                    placeholder="TODOを入力"
-                    value={todoText}
-                    onChange={onChangeTodoText}
-                />
-                <button onClick={onClickAdd}>追加</button>
-            </div>
-            <section className="incomplete-area">
-                <p className="section-title">未完了のTODO</p>
-                <ul>
-                    {incompleteTodos.map((todo, index) => (
-                        <li key={todo}>
-                            <div className="list-row">
-                                <p>{todo}</p>
-                                <button
-                                    onClick={() => {
-                                        onClickComplete(index);
-                                    }}
-                                >
-                                    完了
-                                </button>
-                                <button
-                                    onClick={() => {
-                                        onClickDelete(index);
-                                    }}
-                                >
-                                    削除
-                                </button>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            </section>
+            <InputTodo todoText={todoText} onChange={onChangeTodoText} onClick={onClickAdd} />
 
-            <section className="complete-area">
-                <p className="section-title">完了のTODO</p>
-                <ul>
-                    {completeTodos.map((todo, index) => (
-                        <li key={todo}>
-                            <div className="list-row">
-                                <p>{todo}</p>
-                                <button
-                                    onClick={() => {
-                                        onClickBack(index);
-                                    }}
-                                >
-                                    戻す
-                                </button>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            </section>
+            <IncompleteTodos
+                todos={incompleteTodos}
+                onClickComplete={onClickComplete}
+                onClickDelete={onClickDelete}
+            />
+
+            <CompleteTodos todos={completeTodos} onClickBack={onClickBack} />
         </>
     );
 };
